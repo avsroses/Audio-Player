@@ -42,7 +42,7 @@ function onPlayPauseClick() {
 function onLoadedMetadata() {
     progressSlider.max = audioPlayer.duration;
 
-    durationText.innerHTML = audioPlayer.duration;
+    durationText.innerHTML = secondsToMMSS(audioPlayer.duration);
 }
 
 /**
@@ -71,9 +71,11 @@ function onVolumeSliderChange() {
 function secondsToMMSS(seconds) {
     const integerSeconds = parseInt(seconds);
     // calculate seconds
-    const SS = parseInt(integerSeconds / 60);
+    let MM = parseInt(integerSeconds / 60);
+    if(MM < 10) MM = "0" + MM;
     // calculate minutes
-    const MM = integerSeconds % 60;
+    let SS = integerSeconds % 60;
+    if(SS < 10) SS = "0" + SS;
     return MM + ":" + SS;
 }
 
