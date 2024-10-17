@@ -50,6 +50,8 @@ function onLoadedMetadata() {
  */
 function onTimeUpdate() {
     progressSlider.value = audioPlayer.currentTime;
+
+    progressText.innerHTML = secondsToMMSS(audioPlayer.currentTime);
 }
 
 /**
@@ -59,6 +61,7 @@ function onEnd() {
     progressSlider.value = 0;
     playPauseButton.innerHTML = "play";
     playing = false;
+    progressText.innerHTML = "00:00"
 }
 
 /**
