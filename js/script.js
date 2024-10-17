@@ -26,5 +26,13 @@ function onPlayPauseClick() {
     }
 }
 
-// Link onclick event to the onPlayPauseClick button
+/**
+ * 
+ */
+function onLoadedMetadata() {
+    console.log(audioPlayer.duration);
+}
+
+// Link all events to relevant objects
 playPauseButton.onclick = onPlayPauseClick;
+audioPlayer.onloadedmetadata = onLoadedMetadata
