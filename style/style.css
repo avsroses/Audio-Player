@@ -1,15 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 p {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 /* Styling for buttons */
 button {
-    border-style: solid;
     border-color: darkslategray;
     border-radius: 5px;
     background-color: olive;
     color: white;
-    margin: 5px;
+    margin: 4px;
+    padding: 4px;
 }
 
 /* Display items with flex and center horizontally and vertically */
@@ -27,6 +32,10 @@ button {
     flex-direction: column;
 }
 
+/* .justify-space-around {
+    justify-content: space-evenly;
+} */
+
 #main-container {
     width: 100vw;
     height: 100vh;
@@ -35,6 +44,7 @@ button {
 /* Styles for the audio container*/
 #audio-container {
     height: 300px;
+    width: 35%;
     margin-top: 10px;
     background-color: beige;
 }
@@ -46,6 +56,6 @@ button {
 }
 
 #cover-image {
-    height: 100px;
-    width: 150px;
+    height: 125px;
+    width: 175px;
 }
