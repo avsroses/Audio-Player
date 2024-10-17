@@ -21,6 +21,7 @@ const durationText = document.getElementById("duration-text");
 
 // audioPlayer.src is the first song of the audio player by default
 audioPlayer.src = "assets/sound/Angeleyes.mp3";
+
 const soundSources = ["assets/sound/Angeleyes.mp3", "assets/sound/Gimme!x3.mp3", "assets/sound/Waterloo.mp3"];
 const coverImages = ["assets/images/Angeleyes.jpeg", "assets/images/Gimme!x3.jpeg", "assets/images/Waterloo.jpeg"];
 audioPlayer.volume = 0.5;
@@ -48,6 +49,9 @@ function onPlayPauseClick() {
     }
 }
 
+/**
+ * Next button
+ */
 function onNextButtonClick() {
     songCounter++;
     if(songCounter > 3) {
@@ -60,8 +64,19 @@ function onNextButtonClick() {
     albumImage.src = coverImages[songCounter - 1];
 }
 
+/**
+ * Previous button
+ */
 function onPreviousButtonClick() {
+    songCounter--;
+    if(songCounter < 1) {
+        songCounter = 3;
+    }
 
+    playPauseButton.innerHTML = "play";
+    playing = false;
+    audioPlayer.src = soundSources[songCounter - 1];
+    albumImage.src = coverImages[songCounter - 1];
 }
 
 /**
