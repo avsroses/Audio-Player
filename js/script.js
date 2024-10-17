@@ -16,4 +16,4 @@ function onPlayPauseClick() {
 }
 
 // Link onclick event to the onPlayPauseClick button
-playButton.onclick = onPlayPauseClick;
+playPauseButton.onclick = onPlayPauseClick;
