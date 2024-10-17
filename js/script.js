@@ -36,6 +36,15 @@ function onLoadedMetadata() {
     progressSlider.max = audioPlayer.duration;
 }
 
+/**
+ * 
+ */
+function onTimeUpdate() {
+    progressSlider.value = audioPlayer.currentTime;
+}
+
+
 // Link all events to relevant objects
 playPauseButton.onclick = onPlayPauseClick;
-audioPlayer.onloadedmetadata = onLoadedMetadata
+audioPlayer.onloadedmetadata = onLoadedMetadata;
+audioPlayer.ontimeupdate = onTimeUpdate;
