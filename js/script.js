@@ -7,12 +7,23 @@ const playPauseButton = document.getElementById("play-button");
 // audioPlayer.src is the first song of the audio player by default
 audioPlayer.src = "assets/sound/Angeleyes.mp3";
 
+// Stores if audio is playing
+let playing = false;
+
 /**
- * If audio player is not playing -> play sound
  * If audio player is playing -> do not play sound
+ * If audio player is not playing -> play sound
  */
 function onPlayPauseClick() {
-    audioPlayer.play();
+    if(playing) {
+        audioPlayer.pause();
+        playPauseButton.innerHTML = "play";
+        playing = false;
+    } else {
+        audioPlayer.play();
+        playPauseButton.innerHTML = "pause";
+        playing = true;
+    }
 }
 
 // Link onclick event to the onPlayPauseClick button
