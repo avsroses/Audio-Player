@@ -34,9 +34,9 @@ button {
     flex-direction: column;
 }
 
-/* .justify-space-around {
+.justify-space-around {
     justify-content: space-evenly;
-} */
+}
 
 #main-container {
     width: 100vw;
