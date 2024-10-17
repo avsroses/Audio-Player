@@ -10,6 +10,10 @@ const progressSlider = document.getElementById("progress-slider");
 // Selects volume slider
 const volumeSlider = document.getElementById("volume-slider");
 
+// select progress text spans
+const progressText = document.getElementById("progress-text");
+const durationText = document.getElementById("duration-text");
+
 // audioPlayer.src is the first song of the audio player by default
 audioPlayer.src = "assets/sound/Angeleyes.mp3";
 
@@ -37,6 +41,8 @@ function onPlayPauseClick() {
  */
 function onLoadedMetadata() {
     progressSlider.max = audioPlayer.duration;
+
+    durationText.innerHTML = audioPlayer.duration;
 }
 
 /**
@@ -56,10 +62,19 @@ function onEnd() {
 }
 
 /**
- * take value of volume slider and update audioPlayer.volume
+ * Take value of volume slider and update audioPlayer.volume
  */
 function onVolumeSliderChange() {
     audioPlayer.volume = volumeSlider.value * 0.01;
+}
+
+function secondsToMMSS(seconds) {
+    const integerSeconds = parseInt(seconds);
+    // calculate seconds
+    const SS = parseInt(integerSeconds / 60);
+    // calculate minutes
+    const MM = integerSeconds % 60;
+    return MM + ":" + SS;
 }
 
 
