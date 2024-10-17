@@ -4,6 +4,9 @@ const audioPlayer = new Audio();
 // Select play pause button element
 const playPauseButton = document.getElementById("play-button");
 
+// Select progress slider
+const progressSlider = document.getElementById("progress-slider");
+
 // audioPlayer.src is the first song of the audio player by default
 audioPlayer.src = "assets/sound/Angeleyes.mp3";
 
@@ -15,7 +18,7 @@ let playing = false;
  * If audio player is not playing -> play sound
  */
 function onPlayPauseClick() {
-    if(playing) {
+    if (playing) {
         audioPlayer.pause();
         playPauseButton.innerHTML = "play";
         playing = false;
@@ -30,7 +33,7 @@ function onPlayPauseClick() {
  * 
  */
 function onLoadedMetadata() {
-    console.log(audioPlayer.duration);
+    progressSlider.max = audioPlayer.duration;
 }
 
 // Link all events to relevant objects
