@@ -37,14 +37,23 @@ function onLoadedMetadata() {
 }
 
 /**
- * 
+ * Moves progress slider to current time of song
  */
 function onTimeUpdate() {
     progressSlider.value = audioPlayer.currentTime;
 }
 
+/**
+ * When slider reaches end, reset button and slider
+ */
+function onEnd() {
+    progressSlider.value = 0;
+    playPauseButton.innerHTML = "play";
+    playing = false;
+}
 
 // Link all events to relevant objects
 playPauseButton.onclick = onPlayPauseClick;
 audioPlayer.onloadedmetadata = onLoadedMetadata;
 audioPlayer.ontimeupdate = onTimeUpdate;
+audioPlayer.onended = onEnd;
