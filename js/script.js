@@ -19,11 +19,14 @@ const albumImage = document.getElementById("cover-image");
 const progressText = document.getElementById("progress-text");
 const durationText = document.getElementById("duration-text");
 
+const songName = document.getElementById("song-name");
+
 // audioPlayer.src is the first song of the audio player by default
 audioPlayer.src = "assets/sound/Angeleyes.mp3";
 
 const soundSources = ["assets/sound/Angeleyes.mp3", "assets/sound/Gimme!x3.mp3", "assets/sound/Waterloo.mp3"];
-const coverImages = ["assets/images/Angeleyes.jpeg", "assets/images/Gimme!x3.jpeg", "assets/images/Waterloo.jpeg"];
+const coverImages = ["assets/images/Angeleyes.jpg", "assets/images/Gimme!x3.jpeg", "assets/images/Waterloo.jpeg"];
+const songNames = ["Angeleyes", "Gimme! Gimme! Gimme!", "Waterloo"];
 audioPlayer.volume = 0.5;
 
 // Stores if audio is playing
@@ -62,6 +65,7 @@ function onNextButtonClick() {
     playing = false;
     audioPlayer.src = soundSources[songCounter - 1];
     albumImage.src = coverImages[songCounter - 1];
+    songName.innerHTML = songNames[songCounter - 1];
 }
 
 /**
@@ -77,6 +81,7 @@ function onPreviousButtonClick() {
     playing = false;
     audioPlayer.src = soundSources[songCounter - 1];
     albumImage.src = coverImages[songCounter - 1];
+    songName.innerHTML = songNames[songCounter - 1];
 }
 
 /**
