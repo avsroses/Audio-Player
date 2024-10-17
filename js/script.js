@@ -1,7 +1,7 @@
 // Create the audio player object
 const audioPlayer = new Audio();
 
-const audioContainer = document.getElementById("audio-container");
+let audioContainer = document.getElementById("audio-container");
 const dropZone = document.getElementById("drop-zone");
 
 // Select play pause button element
