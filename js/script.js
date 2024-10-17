@@ -19,6 +19,8 @@ audioPlayer.src = "assets/sound/Angeleyes.mp3";
 
 // Stores if audio is playing
 let playing = false;
+// Stores if someone is adjusting proress slider
+let updatingProgress = false;
 
 /**
  * If audio player is playing -> do not play sound
@@ -49,7 +51,9 @@ function onLoadedMetadata() {
  * Moves progress slider to current time of song
  */
 function onTimeUpdate() {
-    progressSlider.value = audioPlayer.currentTime;
+    if(!updatingProgress) {
+        progressSlider.value = audioPlayer.currentTime;
+    }
 
     progressText.innerHTML = secondsToMMSS(audioPlayer.currentTime);
 }
@@ -71,6 +75,18 @@ function onVolumeSliderChange() {
     audioPlayer.volume = volumeSlider.value * 0.01;
 }
 
+function onProgressMouseDown() {
+    updatingProgress = true;
+}
+
+/**
+ * Take value of current time and update progress slider to that
+ */
+function onProgressSliderChange() {
+    audioPlayer.currentTime = progressSlider.value;
+    updatingProgress = false;
+}
+
 function secondsToMMSS(seconds) {
     const integerSeconds = parseInt(seconds);
     // calculate seconds
@@ -83,9 +99,12 @@ function secondsToMMSS(seconds) {
 }
 
 
+
 // Link all events to relevant objects
 playPauseButton.onclick = onPlayPauseClick;
 audioPlayer.onloadedmetadata = onLoadedMetadata;
 audioPlayer.ontimeupdate = onTimeUpdate;
 audioPlayer.onended = onEnd;
 volumeSlider.onchange = onVolumeSliderChange;
+progressSlider.onchange = onProgressSliderChange
+progressSlider.onmousedown = onProgressMouseDown;
