@@ -51,7 +51,7 @@ button {
     margin-top: 10px;
     background-color: rgb(211, 232, 212);
     border-radius: 10px;
-    position: absolute;
+    /* position: absolute; */
 }
 
 /* Style for title text */
