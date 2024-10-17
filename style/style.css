@@ -1,3 +1,6 @@
+p {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 /* Display items with flex and center horizontally and vertically */
 .container {
     display: flex;
@@ -5,7 +8,7 @@
     align-items: center;
 }
 
-/* container properties + arrange items vertically */
+/* Container properties + arrange items vertically */
 .vertical-container {
     display: flex;
     justify-content: center;
@@ -18,12 +21,14 @@
     height: 100vh;
 }
 
+/* Styles for the audio container*/
 #audio-container {
     height: 300px;
     margin-top: 10px;
     background-color: beige;
 }
 
+/* Style for title text */
 #title {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: cadetblue;
