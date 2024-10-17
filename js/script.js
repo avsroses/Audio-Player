@@ -4,11 +4,16 @@ const audioPlayer = new Audio();
 // Select play pause button element
 const playPauseButton = document.getElementById("play-button");
 
+const nextButton = document.getElementById("next-button");
+const previousButton = document.getElementById("previous-button");
+
 // Select progress slider
 const progressSlider = document.getElementById("progress-slider");
 
 // Selects volume slider
 const volumeSlider = document.getElementById("volume-slider");
+
+const albumImage = document.getElementById("cover-image");
 
 // select progress text spans
 const progressText = document.getElementById("progress-text");
@@ -16,11 +21,16 @@ const durationText = document.getElementById("duration-text");
 
 // audioPlayer.src is the first song of the audio player by default
 audioPlayer.src = "assets/sound/Angeleyes.mp3";
+const soundSources = ["assets/sound/Angeleyes.mp3", "assets/sound/Gimme!x3.mp3", "assets/sound/Waterloo.mp3"];
+const coverImages = ["assets/images/Angeleyes.jpeg", "assets/images/Gimme!x3.jpeg", "assets/images/Waterloo.jpeg"];
+audioPlayer.volume = 0.5;
 
 // Stores if audio is playing
 let playing = false;
 // Stores if someone is adjusting proress slider
 let updatingProgress = false;
+
+let songCounter = 1;
 
 /**
  * If audio player is playing -> do not play sound
@@ -36,6 +46,22 @@ function onPlayPauseClick() {
         playPauseButton.innerHTML = "pause";
         playing = true;
     }
+}
+
+function onNextButtonClick() {
+    songCounter++;
+    if(songCounter > 3) {
+        songCounter = 1;
+    }
+
+    playPauseButton.innerHTML = "play";
+    playing = false;
+    audioPlayer.src = soundSources[songCounter - 1];
+    albumImage.src = coverImages[songCounter - 1];
+}
+
+function onPreviousButtonClick() {
+
 }
 
 /**
@@ -102,6 +128,8 @@ function secondsToMMSS(seconds) {
 
 // Link all events to relevant objects
 playPauseButton.onclick = onPlayPauseClick;
+nextButton.onclick = onNextButtonClick;
+previousButton.onclick = onPreviousButtonClick;
 audioPlayer.onloadedmetadata = onLoadedMetadata;
 audioPlayer.ontimeupdate = onTimeUpdate;
 audioPlayer.onended = onEnd;
