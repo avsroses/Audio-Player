@@ -7,6 +7,9 @@ const playPauseButton = document.getElementById("play-button");
 // Select progress slider
 const progressSlider = document.getElementById("progress-slider");
 
+// Selects volume slider
+const volumeSlider = document.getElementById("volume-slider");
+
 // audioPlayer.src is the first song of the audio player by default
 audioPlayer.src = "assets/sound/Angeleyes.mp3";
 
@@ -52,8 +55,17 @@ function onEnd() {
     playing = false;
 }
 
+/**
+ * take value of volume slider and update audioPlayer.volume
+ */
+function onVolumeSliderChange() {
+    audioPlayer.volume = volumeSlider.value * 0.01;
+}
+
+
 // Link all events to relevant objects
 playPauseButton.onclick = onPlayPauseClick;
 audioPlayer.onloadedmetadata = onLoadedMetadata;
 audioPlayer.ontimeupdate = onTimeUpdate;
 audioPlayer.onended = onEnd;
+volumeSlider.onchange = onVolumeSliderChange;
