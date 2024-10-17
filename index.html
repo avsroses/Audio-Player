@@ -7,7 +7,7 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="style/style.css" />
-    <script src="js/script.js" defer></script>
+    <script src="script.js" defer></script>
 
 </head>
 
@@ -26,10 +26,11 @@
                 <span> by </span>
                 <span> ABBA </span>
             </p>
+
             <!-- Volume + play, previous, next buttons + image cover conntainer-->
-            <div class="container justify-space-around">
+            <div class="vertical-container justify-space-around">
                 <!-- Volume -->
-                <div class="container">
+                <div class="vertical-container">
                     <input type="range" min="0" max="100">
                 </div>
                 <!-- Play, previous, next buttons -->
@@ -41,9 +42,11 @@
                 <!-- Image cover -->
                 <img id="cover-image" src="assets/images/Angeleyes.jpeg" alt="">
             </div>
-            <!--  -->
-            <div class="container">
 
+            <!-- Duration of song -->
+            <div class="container">
+                <p>00:00 / 00:00</p>
+                <input type="range">
             </div>
 
         </div>
