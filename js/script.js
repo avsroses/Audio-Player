@@ -36,8 +36,6 @@ let updatingProgress = false;
 
 let songCounter = 1;
 
-let offsetX = 0;
-let offsetY = 0;
 
 /**
  * If audio player is playing -> do not play sound
