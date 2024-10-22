@@ -18,6 +18,11 @@ button {
     margin: 4px;
 }
 
+/* Changes color of button to show mouse is over it */
+button:hover {
+    background-color: #EAA239;
+}
+
 /* Display items with flex and center horizontally and vertically */
 .container {
     display: flex;
@@ -38,14 +43,14 @@ button {
     justify-content: space-evenly;
 }
 
+/* Spaces buttons either side of cover image */
 .play-options{
     width: 60px;
     height: 40px;
-    margin: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-.play-options:hover{background-color: #EAA239;}
-/* .play-options:focus{background-color: #FFE4A1; color: rgb(78, 78, 78);} */
 
 #main-container {
     width: 100vw;
@@ -55,8 +60,8 @@ button {
 
 /* Styles for the audio container*/
 #audio-container {
-    height: 300px;
-    width: 35%;
+    height: 310px;
+    width: 38%;
     margin-top: 10px;
     background-color: #d1e4be;
     border-radius: 10px;
