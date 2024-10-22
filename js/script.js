@@ -45,13 +45,16 @@ let onAutoPlay = false;
 let btnPressed = 0;
 let loopBtnPressed = 0;
 
+
 // Change button color to show it's selected
 autoPlayButton.addEventListener('click', function onclick(event){
     btnPressed++;
     if (btnPressed % 2 == 0) {
         autoPlayButton.style.backgroundColor = '#F9B97F';
+        autoPlayButton.style.color = 'white';
     } else {
         autoPlayButton.style.backgroundColor = '#FFE4A1';
+        autoPlayButton.style.color = '#567B81';
     }
 }) 
 
@@ -59,8 +62,10 @@ loopButton.addEventListener('click', function onclick(event){
     loopBtnPressed++;
     if (loopBtnPressed % 2 == 0) {
         loopButton.style.backgroundColor = '#F9B97F';
+        autoPlayButton.style.color = 'white';
     } else {
         loopButton.style.backgroundColor = '#FFE4A1';
+        autoPlayButton.style.color = '#567B81';
     }
 }) 
 
