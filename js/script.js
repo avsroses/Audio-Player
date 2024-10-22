@@ -62,10 +62,10 @@ loopButton.addEventListener('click', function onclick(event){
     loopBtnPressed++;
     if (loopBtnPressed % 2 == 0) {
         loopButton.style.backgroundColor = '#F9B97F';
-        autoPlayButton.style.color = 'white';
+        autoPlayButton.style.color = '#567B81';
     } else {
         loopButton.style.backgroundColor = '#FFE4A1';
-        autoPlayButton.style.color = '#567B81';
+        autoPlayButton.style.color = 'white';
     }
 }) 
 
