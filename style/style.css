@@ -44,6 +44,9 @@ button {
     margin: 40px;
 }
 
+.play-options:hover{background-color: #EAA239;}
+/* .play-options:focus{background-color: #FFE4A1; color: rgb(78, 78, 78);} */
+
 #main-container {
     width: 100vw;
     height: 100vh;

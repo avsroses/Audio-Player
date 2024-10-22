@@ -42,6 +42,29 @@ let songCounter = 1;
 let onLoop = false;
 let onAutoPlay = false;
 
+let btnPressed = 0;
+let loopBtnPressed = 0;
+
+// Change button color to show it's selected
+autoPlayButton.addEventListener('click', function onclick(event){
+    btnPressed++;
+    if (btnPressed % 2 == 0) {
+        autoPlayButton.style.backgroundColor = '#F9B97F';
+    } else {
+        autoPlayButton.style.backgroundColor = '#FFE4A1';
+    }
+}) 
+
+loopButton.addEventListener('click', function onclick(event){
+    loopBtnPressed++;
+    if (loopBtnPressed % 2 == 0) {
+        loopButton.style.backgroundColor = '#F9B97F';
+    } else {
+        loopButton.style.backgroundColor = '#FFE4A1';
+    }
+}) 
+
+
 /**
  * If audio player is playing -> do not play sound
  * If audio player is not playing -> play sound
@@ -71,8 +94,15 @@ function onNextButtonClick() {
     audioPlayer.src = soundSources[songCounter - 1];
     albumImage.src = coverImages[songCounter - 1];
     songName.innerHTML = songNames[songCounter - 1];
-    playing = false;
-    onPlayPauseClick();
+
+    // Either auto plays when song is changed or stops
+    if (onAutoPlay) {
+        playing = false;
+        onPlayPauseClick();
+    } else {
+        playPauseButton.innerHTML = "play";
+        playing = false;
+    }
 }
 
 /**
@@ -88,8 +118,14 @@ function onPreviousButtonClick() {
     audioPlayer.src = soundSources[songCounter - 1];
     albumImage.src = coverImages[songCounter - 1];
     songName.innerHTML = songNames[songCounter - 1];
-    playing = false;
-    onPlayPauseClick();
+    // Either auto plays when song is changd or stops
+    if (onAutoPlay) {
+        playing = false;
+        onPlayPauseClick();
+    } else {
+        playPauseButton.innerHTML = "play";
+        playing = false;
+    }
 }
 
 function onAutoPlayClick() {
@@ -131,8 +167,10 @@ function onTimeUpdate() {
 
 /**
  * When slider reaches end, reset button and slider
+ * Or auto play the next song if on loop
  */
 function onEnd() {
+    // Either auto plays when song is up or resets
     if (onLoop) {
         onNextButtonClick();
     } else {
