@@ -1,9 +1,6 @@
 // Create the audio player object
 const audioPlayer = new Audio();
 
-let audioContainer = document.getElementById("audio-container");
-const dropZone = document.getElementById("drop-zone");
-
 // Select play pause button element
 const playPauseButton = document.getElementById("play-button");
 
@@ -150,24 +147,6 @@ function secondsToMMSS(seconds) {
     return MM + ":" + SS;
 }
 
-function onDragStart(event) {
-    audioContainer = event.target;
-
-    const style = window.getComputedStyle(audioContainer, null);
-
-    offsetX = event.clientX - parseInt(style.left);
-    offsetY = event.clientY - parseInt(style.top);
-}
-
-function onDragOver(event) {
-    event.preventDefault();
-}
-
-function onDrop(event) {
-    audioContainer.style.left = event.clientX - offsetX + "px";
-    audioContainer.style.top = event.clientY - offsetY + "px";
-}
-
 
 // Link all events to relevant objects
 playPauseButton.onclick = onPlayPauseClick;
@@ -179,8 +158,3 @@ audioPlayer.onended = onEnd;
 volumeSlider.onchange = onVolumeSliderChange;
 progressSlider.onchange = onProgressSliderChange
 progressSlider.onmousedown = onProgressMouseDown;
-audioContainer.ondragstart = onDragStart;
-audioContainer.ondrop = onDrop;
-audioContainer.ondragover = onDragOver;
-dropZone.ondrop = onDrop;
-dropZone.ondragover = onDragOver;
