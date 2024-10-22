@@ -7,6 +7,9 @@ const playPauseButton = document.getElementById("play-button");
 const nextButton = document.getElementById("next-button");
 const previousButton = document.getElementById("previous-button");
 
+const autoPlayButton = document.getElementById("auto-play");
+const loopButton = document.getElementById("loop");
+
 // Select progress slider
 const progressSlider = document.getElementById("progress-slider");
 
@@ -36,6 +39,8 @@ let updatingProgress = false;
 
 let songCounter = 1;
 
+let onLoop = false;
+let onAutoPlay = false;
 
 /**
  * If audio player is playing -> do not play sound
@@ -59,15 +64,15 @@ function onPlayPauseClick() {
  */
 function onNextButtonClick() {
     songCounter++;
-    if(songCounter > 3) {
+    if (songCounter > 3) {
         songCounter = 1;
     }
 
-    playPauseButton.innerHTML = "play";
-    playing = false;
     audioPlayer.src = soundSources[songCounter - 1];
     albumImage.src = coverImages[songCounter - 1];
     songName.innerHTML = songNames[songCounter - 1];
+    playing = false;
+    onPlayPauseClick();
 }
 
 /**
@@ -76,15 +81,31 @@ function onNextButtonClick() {
  */
 function onPreviousButtonClick() {
     songCounter--;
-    if(songCounter < 1) {
+    if (songCounter < 1) {
         songCounter = 3;
     }
 
-    playPauseButton.innerHTML = "play";
-    playing = false;
     audioPlayer.src = soundSources[songCounter - 1];
     albumImage.src = coverImages[songCounter - 1];
     songName.innerHTML = songNames[songCounter - 1];
+    playing = false;
+    onPlayPauseClick();
+}
+
+function onAutoPlayClick() {
+    if (onAutoPlay) {
+        onAutoPlay = false;
+    } else {
+        onAutoPlay = true;
+    }
+}
+
+function onLoopClick() {
+    if (onLoop) {
+        onLoop = false;
+    } else {
+        onLoop = true;
+    }
 }
 
 /**
@@ -101,7 +122,7 @@ function onLoadedMetadata() {
  * Moves progress slider to current time of song
  */
 function onTimeUpdate() {
-    if(!updatingProgress) {
+    if (!updatingProgress) {
         progressSlider.value = audioPlayer.currentTime;
     }
 
@@ -112,10 +133,14 @@ function onTimeUpdate() {
  * When slider reaches end, reset button and slider
  */
 function onEnd() {
-    progressSlider.value = 0;
-    playPauseButton.innerHTML = "play";
-    playing = false;
-    progressText.innerHTML = "00:00"
+    if (onLoop) {
+        onNextButtonClick();
+    } else {
+        progressSlider.value = 0;
+        playPauseButton.innerHTML = "play";
+        playing = false;
+        progressText.innerHTML = "00:00"
+    }
 }
 
 /**
@@ -141,10 +166,10 @@ function secondsToMMSS(seconds) {
     const integerSeconds = parseInt(seconds);
     // calculate seconds
     let MM = parseInt(integerSeconds / 60);
-    if(MM < 10) MM = "0" + MM;
+    if (MM < 10) MM = "0" + MM;
     // calculate minutes
     let SS = integerSeconds % 60;
-    if(SS < 10) SS = "0" + SS;
+    if (SS < 10) SS = "0" + SS;
     return MM + ":" + SS;
 }
 
@@ -153,9 +178,13 @@ function secondsToMMSS(seconds) {
 playPauseButton.onclick = onPlayPauseClick;
 nextButton.onclick = onNextButtonClick;
 previousButton.onclick = onPreviousButtonClick;
+autoPlayButton.onclick = onAutoPlayClick;
+loopButton.onclick = onLoopClick;
+
 audioPlayer.onloadedmetadata = onLoadedMetadata;
 audioPlayer.ontimeupdate = onTimeUpdate;
 audioPlayer.onended = onEnd;
+
 volumeSlider.onchange = onVolumeSliderChange;
 progressSlider.onchange = onProgressSliderChange
 progressSlider.onmousedown = onProgressMouseDown;
