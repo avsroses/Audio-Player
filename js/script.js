@@ -47,7 +47,7 @@ let loopBtnPressed = 0;
 
 
 // Change button color to show it's selected
-autoPlayButton.addEventListener('click', function onclick(event){
+autoPlayButton.addEventListener('click', function onclick(event) {
     btnPressed++;
     if (btnPressed % 2 == 0) {
         autoPlayButton.style.backgroundColor = '#F9B97F';
@@ -56,9 +56,9 @@ autoPlayButton.addEventListener('click', function onclick(event){
         autoPlayButton.style.backgroundColor = '#FFE4A1';
         autoPlayButton.style.color = '#567B81';
     }
-}) 
+})
 
-loopButton.addEventListener('click', function onclick(event){
+loopButton.addEventListener('click', function onclick(event) {
     loopBtnPressed++;
     if (loopBtnPressed % 2 == 0) {
         loopButton.style.backgroundColor = '#F9B97F';
@@ -67,7 +67,7 @@ loopButton.addEventListener('click', function onclick(event){
         loopButton.style.backgroundColor = '#FFE4A1';
         loopButton.style.color = '#567B81';
     }
-}) 
+})
 
 
 /**
