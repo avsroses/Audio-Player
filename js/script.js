@@ -55,6 +55,7 @@ function onPlayPauseClick() {
 
 /**
  * Next button
+ * Moves the song to the next one in the audio player
  */
 function onNextButtonClick() {
     songCounter++;
@@ -71,6 +72,7 @@ function onNextButtonClick() {
 
 /**
  * Previous button
+ * Goes back to the previous song in the audio player
  */
 function onPreviousButtonClick() {
     songCounter--;
@@ -86,7 +88,8 @@ function onPreviousButtonClick() {
 }
 
 /**
- * 
+ * Progress slider max is length of current song 
+ * Duration text matches length of current song
  */
 function onLoadedMetadata() {
     progressSlider.max = audioPlayer.duration;

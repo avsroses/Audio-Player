@@ -2,11 +2,12 @@
 // Selects audio container element
 const audioContainer = document.getElementById("audio-container");
 // Selects drop zone element
-const dropZone = document.getElementById("drop-zone");
+const dropZone = document.getElementById("main-container");
 
 let offsetX = 0;
 let offsetY = 0;
 
+let draggedImg = undefined;
 
 // FUNCTIONS
 /**
@@ -14,8 +15,8 @@ let offsetY = 0;
  * @param {Event} event stores information on current drop event
  */
 function onDrop(event) {
-    audioContainer.style.left = event.clientX - offsetX + "px";
-    audioContainer.style.top = event.clientY - offsetY + "px";
+    draggedImg.style.left = event.clientX - offsetX + "px";
+    draggedImg.style.top = event.clientY - offsetY + "px";
 }
 
 /**
@@ -31,9 +32,9 @@ function onDragOver(event) {
  * @param {Event} event stores information related to the current drag start event
  */
 function onDragStart(event) {
-    audioContainer = event.target;
+    draggedImg = event.target;
 
-    const style = window.getComputedStyle(audioContainer, null);
+    const style = window.getComputedStyle(draggedImg, null);
 
     offsetX = event.clientX - parseInt(style.left);
     offsetY = event.clientY - parseInt(style.top);
