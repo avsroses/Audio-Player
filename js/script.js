@@ -101,7 +101,7 @@ function onNextButtonClick() {
     songName.innerHTML = songNames[songCounter - 1];
 
     // Either auto plays when song is changed or stops
-    if (onAutoPlay) {
+    if (onLoop) {
         playing = false;
         onPlayPauseClick();
     } else {
@@ -124,7 +124,7 @@ function onPreviousButtonClick() {
     albumImage.src = coverImages[songCounter - 1];
     songName.innerHTML = songNames[songCounter - 1];
     // Either auto plays when song is changd or stops
-    if (onAutoPlay) {
+    if (onLoop) {
         playing = false;
         onPlayPauseClick();
     } else {
@@ -176,17 +176,17 @@ function onTimeUpdate() {
  */
 function onEnd() {
     // Either auto plays when song is up or resets
-    if (onLoop) {
-        // onNextButtonClick();
+    if (onAutoPlay) {
+        // Makes sure it moves onto a value that is actually a song
         songCounter++;
         if (songCounter > 3) {
             songCounter = 1;
         }
-        
+        // All arrays are accessing correct song
         audioPlayer.src = soundSources[songCounter - 1];
         albumImage.src = coverImages[songCounter - 1];
         songName.innerHTML = songNames[songCounter - 1];
-
+        // Calls play pause function and makes song start playing
         playing = false;
         onPlayPauseClick();
     } else {
@@ -216,6 +216,11 @@ function onProgressSliderChange() {
     updatingProgress = false;
 }
 
+/**
+ * Calculates the amount of minutes and seconds from a value of seconds
+ * @param {seconds} seconds 
+ * @returns minutes : seconds
+ */
 function secondsToMMSS(seconds) {
     const integerSeconds = parseInt(seconds);
     // calculate seconds
@@ -227,8 +232,9 @@ function secondsToMMSS(seconds) {
     return MM + ":" + SS;
 }
 
-
+// ***********************************
 // Link all events to relevant objects
+// ***********************************
 playPauseButton.onclick = onPlayPauseClick;
 nextButton.onclick = onNextButtonClick;
 previousButton.onclick = onPreviousButtonClick;
