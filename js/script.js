@@ -1,3 +1,6 @@
+// *********
+// VARIABLES
+// *********
 // Create the audio player object
 const audioPlayer = new Audio();
 
@@ -52,7 +55,7 @@ let onAutoPlay = false;
 let btnPressed = 0;
 let loopBtnPressed = 0;
 
-
+// EVENT LISTENERS
 // Change button color to show it's selected for both onLoop and onAutoPlay
 autoPlayButton.addEventListener('click', function onclick(event) {
     btnPressed++;
@@ -76,7 +79,9 @@ loopButton.addEventListener('click', function onclick(event) {
     }
 })
 
-
+// *********
+// FUNCTIONS
+// *********
 /**
  * If audio player is playing -> do not play sound
  * If audio player is not playing -> play sound
