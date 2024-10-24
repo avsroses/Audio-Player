@@ -30,9 +30,9 @@ const songName = document.getElementById("song-name");
 // audioPlayer.src is the first song of the audio player by default
 audioPlayer.src = "assets/sound/Angeleyes.mp3";
 
-const soundSources = ["assets/sound/Angeleyes.mp3", "assets/sound/Gimme!x3.mp3", "assets/sound/Waterloo.mp3"];
-const coverImages = ["assets/images/Angeleyes.jpg", "assets/images/Gimme!x3.jpeg", "assets/images/Waterloo.jpeg"];
-const songNames = ["Angeleyes", "Gimme! Gimme! Gimme!", "Waterloo"];
+const soundSources = ["assets/sound/Angeleyes.mp3", "assets/sound/Does Your Mother Know.mp3", "assets/sound/Gimme!x3.mp3", "assets/sound/Voulez-Vous.mp3", "assets/sound/Waterloo.mp3",];
+const coverImages = ["assets/images/Angeleyes.jpg", "assets/images/Does Your Mother Know.jpg", "assets/images/Gimme!x3.jpeg", "assets/images/Voulez-Vous.jpg", "assets/images/Waterloo.jpeg"];
+const songNames = ["Angeleyes", "Does Your Mother Know", "Gimme! Gimme! Gimme!", "Voules-Vous", "Waterloo"];
 audioPlayer.volume = 0.5;
 
 // Stores if audio is playing
@@ -95,7 +95,7 @@ function onPlayPauseClick() {
  */
 function onNextButtonClick() {
     songCounter++;
-    if (songCounter > 3) {
+    if (songCounter > 5) {
         songCounter = 1;
     }
 
@@ -120,7 +120,7 @@ function onNextButtonClick() {
 function onPreviousButtonClick() {
     songCounter--;
     if (songCounter < 1) {
-        songCounter = 3;
+        songCounter = 5;
     }
 
     audioPlayer.src = soundSources[songCounter - 1];
@@ -182,7 +182,7 @@ function onEnd() {
     if (onAutoPlay) {
         // Makes sure it moves onto a value that is actually a song
         songCounter++;
-        if (songCounter > 3) {
+        if (songCounter > 5) {
             songCounter = 1;
         }
         // All arrays are accessing correct song
