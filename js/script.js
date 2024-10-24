@@ -177,7 +177,18 @@ function onTimeUpdate() {
 function onEnd() {
     // Either auto plays when song is up or resets
     if (onLoop) {
-        onNextButtonClick();
+        // onNextButtonClick();
+        songCounter++;
+        if (songCounter > 3) {
+            songCounter = 1;
+        }
+        
+        audioPlayer.src = soundSources[songCounter - 1];
+        albumImage.src = coverImages[songCounter - 1];
+        songName.innerHTML = songNames[songCounter - 1];
+
+        playing = false;
+        onPlayPauseClick();
     } else {
         progressSlider.value = 0;
         playPauseButton.innerHTML = "play";
