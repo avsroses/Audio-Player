@@ -33,10 +33,39 @@ const songName = document.getElementById("song-name");
 // audioPlayer.src is the first song of the audio player by default
 audioPlayer.src = "assets/sound/Angeleyes.mp3";
 
-// Arrays that are iterated through for song sound, image, and name
-const soundSources = ["assets/sound/Angeleyes.mp3", "assets/sound/Does Your Mother Know.mp3", "assets/sound/Gimme!x3.mp3", "assets/sound/Voulez-Vous.mp3", "assets/sound/Waterloo.mp3",];
-const coverImages = ["assets/images/Angeleyes.jpg", "assets/images/Does Your Mother Know.jpg", "assets/images/Gimme!x3.jpeg", "assets/images/Voulez-Vous.jpg", "assets/images/Waterloo.jpeg"];
-const songNames = ["Angeleyes", "Does Your Mother Know", "Gimme! Gimme! Gimme!", "Voules-Vous", "Waterloo"];
+// All information about songs
+const songsInfo = [
+    // First song - element at songsInfo[0]
+    {
+        audioSource: "assets/sound/Angeleyes.mp3",
+        title: "Angeleyes",
+        imageSource: "assets/images/Angeleyes.jpg",
+    },
+    // Second song - element at songsInfo[1]
+    {
+        audioSource: "assets/sound/Does Your Mother Know.mp3",
+        title: "Does Your Mother Know",
+        imageSource: "assets/images/Does Your Mother Know.jpg",
+    },
+    // Third song - element at songsInfo[2]
+    {
+        audioSource: "assets/sound/Gimme!x3.mp3",
+        title: "Gimme! Gimme! Gimme!",
+        imageSource: "assets/images/Gimme!x3.jpeg",
+    },
+    // Fourth song - element at songsInfo[3]
+    {
+        audioSource: "assets/images/Gimme!x3.jpeg",
+        title: "Voules-Vous",
+        imageSource: "assets/images/Voulez-Vous.jpg",
+    },
+    // Fifth Song - element at songsInfo[4]
+    {
+        audioSource: "assets/sound/Waterloo.mp3",
+        title: "Waterloo",
+        imageSource: "assets/images/Waterloo.jpeg",
+    },
+]
 
 // Sets volume of audio player to be half as slider starts in middle
 audioPlayer.volume = 0.5;
@@ -45,7 +74,8 @@ audioPlayer.volume = 0.5;
 let playing = false;
 // Stores if someone is adjusting proress slider
 let updatingProgress = false;
-
+// Stores whether any of the sliders are changing
+let sliderIsChanging = false;
 // Initialises variables that are changed throughout
 let songCounter = 1;
 
@@ -110,9 +140,9 @@ function onNextButtonClick() {
         songCounter = 1;
     }
 
-    audioPlayer.src = soundSources[songCounter - 1];
-    albumImage.src = coverImages[songCounter - 1];
-    songName.innerHTML = songNames[songCounter - 1];
+    audioPlayer.src = songsInfo[songCounter - 1].audioSource;
+    albumImage.src = songsInfo[songCounter - 1].imageSource;
+    songName.innerHTML = songsInfo[songCounter - 1].title;
 
     // Either auto plays when song is changed or stops
     if (onLoop) {
@@ -134,9 +164,9 @@ function onPreviousButtonClick() {
         songCounter = 5;
     }
 
-    audioPlayer.src = soundSources[songCounter - 1];
-    albumImage.src = coverImages[songCounter - 1];
-    songName.innerHTML = songNames[songCounter - 1];
+    audioPlayer.src = songsInfo[songCounter - 1].audioSource;
+    albumImage.src = songsInfo[songCounter - 1].imageSource;
+    songName.innerHTML = songsInfo[songCounter - 1].title;
     // Either auto plays when song is changd or stops
     if (onLoop) {
         playing = false;
@@ -197,9 +227,9 @@ function onEnd() {
             songCounter = 1;
         }
         // All arrays are accessing correct song
-        audioPlayer.src = soundSources[songCounter - 1];
-        albumImage.src = coverImages[songCounter - 1];
-        songName.innerHTML = songNames[songCounter - 1];
+        audioPlayer.src = songsInfo[songCounter - 1].audioSource;
+        albumImage.src = songsInfo[songCounter - 1].imageSource;
+        songName.innerHTML = songsInfo[songCounter - 1].title;
         // Calls play pause function and makes song start playing
         playing = false;
         onPlayPauseClick();
@@ -216,6 +246,11 @@ function onEnd() {
  */
 function onVolumeSliderChange() {
     audioPlayer.volume = volumeSlider.value * 0.01;
+    sliderIsChanging = false;
+}
+
+function onVolumeMouseDown() {
+    sliderIsChanging = true;
 }
 
 /**
@@ -223,6 +258,7 @@ function onVolumeSliderChange() {
  */
 function onProgressMouseDown() {
     updatingProgress = true;
+    sliderIsChanging = true;
 }
 
 /**
@@ -231,6 +267,7 @@ function onProgressMouseDown() {
 function onProgressSliderChange() {
     audioPlayer.currentTime = progressSlider.value;
     updatingProgress = false;
+    sliderIsChanging = false;
 }
 
 /**
@@ -263,5 +300,6 @@ audioPlayer.ontimeupdate = onTimeUpdate;
 audioPlayer.onended = onEnd;
 
 volumeSlider.onchange = onVolumeSliderChange;
+volumeSlider.onmousedown = onVolumeMouseDown;
 progressSlider.onchange = onProgressSliderChange
 progressSlider.onmousedown = onProgressMouseDown;

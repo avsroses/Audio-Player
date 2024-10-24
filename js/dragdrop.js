@@ -31,6 +31,12 @@ function onDragOver(event) {
  * @param {Event} event stores information related to the current drag start event
  */
 function onDragStart(event) {
+    // Moving sliders wont move player
+    if(sliderIsChanging) {
+        event.preventDefault();
+        return;
+    }
+
     const style = window.getComputedStyle(audioContainer, null);
 
     offsetX = event.clientX - parseInt(style.left);
