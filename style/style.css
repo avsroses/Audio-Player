@@ -1,8 +1,10 @@
+/* Removes all padding and margins */
 * {
     margin: 0;
     padding: 0;
 }
 
+/* Set font for the page and adds margin around all text */
 p {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 10px;
@@ -39,6 +41,7 @@ button:hover {
     flex-direction: column;
 }
 
+/* Spaces content evenly on page */
 .justify-space-around {
     justify-content: space-evenly;
 }
@@ -51,7 +54,7 @@ button:hover {
     margin-right: 20px;
 }
 
-
+/* Sets styling for main container (background of page) */
 #main-container {
     width: 100vw;
     height: 100vh;
@@ -68,7 +71,7 @@ button:hover {
     position: relative;
 }
 
-/* Style for title text */
+/* Style for title */
 #title {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #567B81;
@@ -77,6 +80,7 @@ button:hover {
     position: absolute;
 }
 
+/* All images are set to same height and width */
 #cover-image {
     height: 125px;
     width: 125px;
