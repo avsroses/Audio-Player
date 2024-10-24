@@ -4,9 +4,11 @@ const audioPlayer = new Audio();
 // Select play pause button element
 const playPauseButton = document.getElementById("play-button");
 
+// Selects previous and next buttons
 const nextButton = document.getElementById("next-button");
 const previousButton = document.getElementById("previous-button");
 
+// Selects auto play and loop buttons
 const autoPlayButton = document.getElementById("auto-play");
 const loopButton = document.getElementById("loop");
 
@@ -16,6 +18,7 @@ const progressSlider = document.getElementById("progress-slider");
 // Selects volume slider
 const volumeSlider = document.getElementById("volume-slider");
 
+// Selects cover image
 const albumImage = document.getElementById("cover-image");
 
 // select progress text spans
@@ -46,7 +49,7 @@ let btnPressed = 0;
 let loopBtnPressed = 0;
 
 
-// Change button color to show it's selected
+// Change button color to show it's selected for both onLoop and onAutoPlay
 autoPlayButton.addEventListener('click', function onclick(event) {
     btnPressed++;
     if (btnPressed % 2 == 0) {
@@ -133,6 +136,7 @@ function onPreviousButtonClick() {
     }
 }
 
+// Allows onAutoPlay to be pressed multiple times
 function onAutoPlayClick() {
     if (onAutoPlay) {
         onAutoPlay = false;
@@ -140,7 +144,7 @@ function onAutoPlayClick() {
         onAutoPlay = true;
     }
 }
-
+// Allows onLoop button to be pressed multiple times
 function onLoopClick() {
     if (onLoop) {
         onLoop = false;
@@ -166,7 +170,6 @@ function onTimeUpdate() {
     if (!updatingProgress) {
         progressSlider.value = audioPlayer.currentTime;
     }
-
     progressText.innerHTML = secondsToMMSS(audioPlayer.currentTime);
 }
 
@@ -204,6 +207,9 @@ function onVolumeSliderChange() {
     audioPlayer.volume = volumeSlider.value * 0.01;
 }
 
+/**
+ * When mouse is on screen, update variable to show 
+ */
 function onProgressMouseDown() {
     updatingProgress = true;
 }
