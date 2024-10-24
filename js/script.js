@@ -30,9 +30,12 @@ const songName = document.getElementById("song-name");
 // audioPlayer.src is the first song of the audio player by default
 audioPlayer.src = "assets/sound/Angeleyes.mp3";
 
+// Arrays that are iterated through for song sound, image, and name
 const soundSources = ["assets/sound/Angeleyes.mp3", "assets/sound/Does Your Mother Know.mp3", "assets/sound/Gimme!x3.mp3", "assets/sound/Voulez-Vous.mp3", "assets/sound/Waterloo.mp3",];
 const coverImages = ["assets/images/Angeleyes.jpg", "assets/images/Does Your Mother Know.jpg", "assets/images/Gimme!x3.jpeg", "assets/images/Voulez-Vous.jpg", "assets/images/Waterloo.jpeg"];
 const songNames = ["Angeleyes", "Does Your Mother Know", "Gimme! Gimme! Gimme!", "Voules-Vous", "Waterloo"];
+
+// Sets volume of audio player to be half as slider starts in middle
 audioPlayer.volume = 0.5;
 
 // Stores if audio is playing
@@ -40,6 +43,7 @@ let playing = false;
 // Stores if someone is adjusting proress slider
 let updatingProgress = false;
 
+// Initialises variables that are changed throughout
 let songCounter = 1;
 
 let onLoop = false;
