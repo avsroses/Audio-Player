@@ -55,7 +55,9 @@ let onAutoPlay = false;
 let btnPressed = 0;
 let loopBtnPressed = 0;
 
+// ***************
 // EVENT LISTENERS
+// ***************
 // Change button color to show it's selected for both onLoop and onAutoPlay
 autoPlayButton.addEventListener('click', function onclick(event) {
     btnPressed++;
